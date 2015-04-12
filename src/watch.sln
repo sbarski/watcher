@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "watch.ui", "watch.ui\watch.ui.csproj", "{B4E232FB-35B4-44DA-883E-A21722D9ACEB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "watch.actor", "watch.actor\watch.actor.csproj", "{83B043BB-279D-459F-9378-7B57B16EA8D0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "watch.settings", "watch.settings\watch.settings.csproj", "{EB1C7000-48BF-47E4-AB15-237C25BE3117}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B4E232FB-35B4-44DA-883E-A21722D9ACEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4E232FB-35B4-44DA-883E-A21722D9ACEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4E232FB-35B4-44DA-883E-A21722D9ACEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4E232FB-35B4-44DA-883E-A21722D9ACEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83B043BB-279D-459F-9378-7B57B16EA8D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83B043BB-279D-459F-9378-7B57B16EA8D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83B043BB-279D-459F-9378-7B57B16EA8D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83B043BB-279D-459F-9378-7B57B16EA8D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB1C7000-48BF-47E4-AB15-237C25BE3117}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB1C7000-48BF-47E4-AB15-237C25BE3117}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB1C7000-48BF-47E4-AB15-237C25BE3117}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB1C7000-48BF-47E4-AB15-237C25BE3117}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
