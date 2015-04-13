@@ -22,8 +22,7 @@ namespace watch.ui
 
             Settings = AppSettings.Load(_saveFile);
 
-            locations.DataSource = Settings.Locations;
-            locations.DisplayMember = "FriendlyName";
+            DataBindLocations();
 
             LogList.DataSource = WatchManager.Logs;
 
@@ -37,11 +36,17 @@ namespace watch.ui
             notifyIcon.MouseClick += notifyIcon_MouseClick;
         }
 
+        private void DataBindLocations()
+        {
+            locations.DataSource = null;
+            locations.DataSource = Settings.Locations;
+            locations.DisplayMember = "FriendlyName";
+        }
+
         void notifyIcon_MouseClick(object sender, MouseEventArgs e)
         {
             this.WindowState = FormWindowState.Normal;
         }
-
 
         private void Config_Load(object sender, System.EventArgs e)
         {
@@ -64,6 +69,8 @@ namespace watch.ui
             Settings.Locations.ResetBindings();
 
             AppSettings.Save(Settings, _saveFile);
+
+            DataBindLocations();
         }
 
         private void removeLocation_Click(object sender, System.EventArgs e)
