@@ -1,12 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Configuration;
+﻿using System.Configuration;
 using System.Linq;
 using System.Windows.Forms;
-using MetroFramework.Forms;
+using MetroFramework.Controls;
 using watch.actor;
 using watch.settings;
 
@@ -29,6 +24,8 @@ namespace watch.ui
 
             locations.DataSource = Settings.Locations;
             locations.DisplayMember = "FriendlyName";
+
+            LogList.DataSource = WatchManager.Logs;
 
             friendlyName.DataBindings.Add("Text", locations.DataSource, "FriendlyName", true, DataSourceUpdateMode.OnPropertyChanged);
             watchFolder.DataBindings.Add("Text", locations.DataSource, "WatchFolder", true, DataSourceUpdateMode.OnPropertyChanged);
@@ -103,19 +100,19 @@ namespace watch.ui
             }
         }
 
-        private void metroLink1_Click(object sender, System.EventArgs e)
+        private void metroToggle1_CheckedChanged(object sender, System.EventArgs e)
         {
-            if (WatchManager.IsRunning)
+            var checkedState = (sender as MetroToggle).CheckState;
+
+            if (checkedState == CheckState.Checked)
             {
-                watchStatus.Text = "(Not Running)";
-                startWatch.Text = "Start";
-                WatchManager.Stop();
+                watchStatus.Text = "(Running)";
+                WatchManager.Start(Settings.Locations);
             }
             else
             {
-                watchStatus.Text = "(Running)";
-                startWatch.Text = "Stop";
-                WatchManager.Start(Settings.Locations);
+                watchStatus.Text = "(Not Running)";
+                WatchManager.Stop();
             }
         }
     }

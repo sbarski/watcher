@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using Akka.Actor;
 using watch.settings;
@@ -15,12 +16,16 @@ namespace watch.actor
         private static IActorRef _fileMoveActor;
         private static IActorRef _logActor;
 
+        public static BindingList<string> Logs; 
+
         public static void Init()
         {
+            Logs = new BindingList<string>();
+
             if (_actorSystem == null)
             {
                 _actorSystem = ActorSystem.Create("FileActors");
-                _logActor = _actorSystem.ActorOf(Props.Create<LogActor>(), "LogActor");
+                _logActor = _actorSystem.ActorOf(Props.Create<LogActor>(Logs), "LogActor");
                 _fileMoveActor = _actorSystem.ActorOf(Props.Create<FileMoveActor>(), "FileMoveActor");
             }
 
