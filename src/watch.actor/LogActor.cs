@@ -1,21 +1,24 @@
 ﻿using System;
+using System.ComponentModel;
 using Akka.Actor;
 
 namespace watch.actor
 {
     public class LogActor : ReceiveActor
     {
-        public LogActor()
+        public LogActor(BindingList<string> logs)
         {
             Receive<string>(m =>
             {
-                Console.WriteLine(m);
+                if (logs.Count > 1000)
+                {
+                    logs.RemoveAt(logs.Count - 1);
+                }
+
+                logs.Insert(0, string.Format("{0} : {1}", DateTime.Now, m));
             });
 
-            Receive<Exception>(m =>
-            {
-                Console.WriteLine(m.InnerException);
-            });
+            Receive<Exception>(m => logs.Insert(0, string.Format("{0} : {1}", DateTime.Now, m.Message)));
         }
     }
 }

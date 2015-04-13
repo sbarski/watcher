@@ -30,6 +30,8 @@ namespace watch.ui
             locations.DataSource = Settings.Locations;
             locations.DisplayMember = "FriendlyName";
 
+            LogList.DataSource = WatchManager.Logs;
+
             friendlyName.DataBindings.Add("Text", locations.DataSource, "FriendlyName", true, DataSourceUpdateMode.OnPropertyChanged);
             watchFolder.DataBindings.Add("Text", locations.DataSource, "WatchFolder", true, DataSourceUpdateMode.OnPropertyChanged);
             copyToFolder.DataBindings.Add("Text", locations.DataSource, "CopyToFolder", true, DataSourceUpdateMode.OnPropertyChanged);
