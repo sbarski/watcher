@@ -2,6 +2,7 @@
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Configuration;
 using System.Linq;
 using System.Windows.Forms;
@@ -15,7 +16,6 @@ namespace watch.ui
     {
         private Settings Settings { get; set; }
         private string _saveFile { get; set; }
-
 
         public Config()
         {
@@ -63,6 +63,8 @@ namespace watch.ui
             {
                 MetroFramework.MetroMessageBox.Show(this, "Please fill out all fields", "Save", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            Settings.Locations.ResetBindings();
 
             AppSettings.Save(Settings, _saveFile);
         }
