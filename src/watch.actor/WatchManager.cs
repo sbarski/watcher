@@ -35,6 +35,7 @@ namespace watch.actor
                 
             watch.Changed += (sender, args) => TellActor(args, location.CopyToFolder);
             watch.Created += (sender, args) => TellActor(args, location.CopyToFolder);
+            watch.Renamed += (sender, args) => TellActor(args, location.CopyToFolder);
 
             watch.EnableRaisingEvents = true;
 
