@@ -10,7 +10,7 @@ namespace watch.actor
         {
             Receive<string>(m =>
             {
-                if (logs.Count > 1000)
+                if (logs.Count > 1000) //hard limit the amount of log entries for now
                 {
                     logs.RemoveAt(logs.Count - 1);
                 }
