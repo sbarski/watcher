@@ -30,8 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Config));
-            this.Log = new MetroFramework.Controls.MetroTabControl();
+            this.TabControl = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
+            this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
+            this.selfGeneratedId = new MetroFramework.Controls.MetroLabel();
             this.createNewLocation = new MetroFramework.Controls.MetroButton();
             this.removeLocation = new MetroFramework.Controls.MetroButton();
             this.saveLocation = new MetroFramework.Controls.MetroButton();
@@ -46,28 +48,26 @@
             this.friendlyName = new MetroFramework.Controls.MetroTextBox();
             this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
             this.metroTabPage3 = new MetroFramework.Controls.MetroTabPage();
-            this.watchStatus = new MetroFramework.Controls.MetroLabel();
-            this.startWatch = new MetroFramework.Controls.MetroLink();
-            this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
-            this.selfGeneratedId = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
             this.LogList = new System.Windows.Forms.ListBox();
-            this.Log.SuspendLayout();
+            this.watchStatus = new MetroFramework.Controls.MetroLabel();
+            this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.metroToggle1 = new MetroFramework.Controls.MetroToggle();
+            this.TabControl.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
             this.metroTabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
-            // Log
+            // TabControl
             // 
-            this.Log.Controls.Add(this.metroTabPage1);
-            this.Log.Controls.Add(this.metroTabPage2);
-            this.Log.Controls.Add(this.metroTabPage3);
-            this.Log.Location = new System.Drawing.Point(24, 73);
-            this.Log.Name = "Log";
-            this.Log.SelectedIndex = 2;
-            this.Log.Size = new System.Drawing.Size(819, 389);
-            this.Log.TabIndex = 0;
-            this.Log.UseSelectable = true;
+            this.TabControl.Controls.Add(this.metroTabPage1);
+            this.TabControl.Controls.Add(this.metroTabPage2);
+            this.TabControl.Controls.Add(this.metroTabPage3);
+            this.TabControl.Location = new System.Drawing.Point(24, 73);
+            this.TabControl.Name = "TabControl";
+            this.TabControl.SelectedIndex = 0;
+            this.TabControl.Size = new System.Drawing.Size(819, 389);
+            this.TabControl.TabIndex = 0;
+            this.TabControl.UseSelectable = true;
             // 
             // metroTabPage1
             // 
@@ -96,6 +96,24 @@
             this.metroTabPage1.VerticalScrollbarBarColor = true;
             this.metroTabPage1.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage1.VerticalScrollbarSize = 10;
+            // 
+            // metroLabel6
+            // 
+            this.metroLabel6.AutoSize = true;
+            this.metroLabel6.Location = new System.Drawing.Point(196, 258);
+            this.metroLabel6.Name = "metroLabel6";
+            this.metroLabel6.Size = new System.Drawing.Size(50, 19);
+            this.metroLabel6.TabIndex = 15;
+            this.metroLabel6.Text = "Task Id:";
+            // 
+            // selfGeneratedId
+            // 
+            this.selfGeneratedId.AutoSize = true;
+            this.selfGeneratedId.Location = new System.Drawing.Point(252, 258);
+            this.selfGeneratedId.Name = "selfGeneratedId";
+            this.selfGeneratedId.Size = new System.Drawing.Size(117, 19);
+            this.selfGeneratedId.TabIndex = 14;
+            this.selfGeneratedId.Text = "Self Generated Id: ";
             // 
             // createNewLocation
             // 
@@ -258,6 +276,14 @@
             this.metroTabPage3.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage3.VerticalScrollbarSize = 10;
             // 
+            // LogList
+            // 
+            this.LogList.FormattingEnabled = true;
+            this.LogList.Location = new System.Drawing.Point(0, 3);
+            this.LogList.Name = "LogList";
+            this.LogList.Size = new System.Drawing.Size(811, 342);
+            this.LogList.TabIndex = 2;
+            // 
             // watchStatus
             // 
             this.watchStatus.AutoSize = true;
@@ -268,61 +294,36 @@
             this.watchStatus.Text = "(Not Running)";
             this.watchStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // startWatch
-            // 
-            this.startWatch.Location = new System.Drawing.Point(636, 44);
-            this.startWatch.Name = "startWatch";
-            this.startWatch.Size = new System.Drawing.Size(39, 23);
-            this.startWatch.TabIndex = 2;
-            this.startWatch.Text = "Start";
-            this.startWatch.UseSelectable = true;
-            this.startWatch.Click += new System.EventHandler(this.metroLink1_Click);
-            // 
             // notifyIcon
             // 
             this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
             this.notifyIcon.Text = "Watch";
             // 
-            // selfGeneratedId
+            // metroToggle1
             // 
-            this.selfGeneratedId.AutoSize = true;
-            this.selfGeneratedId.Location = new System.Drawing.Point(252, 258);
-            this.selfGeneratedId.Name = "selfGeneratedId";
-            this.selfGeneratedId.Size = new System.Drawing.Size(117, 19);
-            this.selfGeneratedId.TabIndex = 14;
-            this.selfGeneratedId.Text = "Self Generated Id: ";
-            // 
-            // metroLabel6
-            // 
-            this.metroLabel6.AutoSize = true;
-            this.metroLabel6.Location = new System.Drawing.Point(196, 258);
-            this.metroLabel6.Name = "metroLabel6";
-            this.metroLabel6.Size = new System.Drawing.Size(50, 19);
-            this.metroLabel6.TabIndex = 15;
-            this.metroLabel6.Text = "Task Id:";
-            // 
-            // LogList
-            // 
-            this.LogList.FormattingEnabled = true;
-            this.LogList.Location = new System.Drawing.Point(0, 3);
-            this.LogList.Name = "LogList";
-            this.LogList.Size = new System.Drawing.Size(811, 342);
-            this.LogList.TabIndex = 2;
+            this.metroToggle1.AutoSize = true;
+            this.metroToggle1.Location = new System.Drawing.Point(638, 44);
+            this.metroToggle1.Name = "metroToggle1";
+            this.metroToggle1.Size = new System.Drawing.Size(80, 17);
+            this.metroToggle1.TabIndex = 17;
+            this.metroToggle1.Text = "Off";
+            this.metroToggle1.UseSelectable = true;
+            this.metroToggle1.CheckedChanged += new System.EventHandler(this.metroToggle1_CheckedChanged);
             // 
             // Config
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(866, 485);
-            this.Controls.Add(this.startWatch);
+            this.Controls.Add(this.metroToggle1);
             this.Controls.Add(this.watchStatus);
-            this.Controls.Add(this.Log);
+            this.Controls.Add(this.TabControl);
             this.MaximizeBox = false;
             this.Name = "Config";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "Watcher";
             this.Load += new System.EventHandler(this.Config_Load);
-            this.Log.ResumeLayout(false);
+            this.TabControl.ResumeLayout(false);
             this.metroTabPage1.ResumeLayout(false);
             this.metroTabPage1.PerformLayout();
             this.metroTabPage3.ResumeLayout(false);
@@ -333,7 +334,7 @@
 
         #endregion
 
-        private MetroFramework.Controls.MetroTabControl Log;
+        private MetroFramework.Controls.MetroTabControl TabControl;
         private MetroFramework.Controls.MetroTabPage metroTabPage1;
         private MetroFramework.Controls.MetroTabPage metroTabPage2;
         private MetroFramework.Controls.MetroTextBox friendlyName;
@@ -350,11 +351,11 @@
         private MetroFramework.Controls.MetroButton createNewLocation;
         private MetroFramework.Controls.MetroTabPage metroTabPage3;
         private MetroFramework.Controls.MetroLabel watchStatus;
-        private MetroFramework.Controls.MetroLink startWatch;
         private System.Windows.Forms.NotifyIcon notifyIcon;
         private MetroFramework.Controls.MetroLabel selfGeneratedId;
         private MetroFramework.Controls.MetroLabel metroLabel6;
         private System.Windows.Forms.ListBox LogList;
+        private MetroFramework.Controls.MetroToggle metroToggle1;
 
 
 
