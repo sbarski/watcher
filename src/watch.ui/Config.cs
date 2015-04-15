@@ -29,6 +29,7 @@ namespace watch.ui
 
             friendlyName.DataBindings.Add("Text", locations.DataSource, "FriendlyName", true, DataSourceUpdateMode.OnPropertyChanged);
             watchFolder.DataBindings.Add("Text", locations.DataSource, "WatchFolder", true, DataSourceUpdateMode.OnPropertyChanged);
+            chkWatchSubdirectories.DataBindings.Add("Checked", locations.DataSource, "WatchSubdirectories", true, DataSourceUpdateMode.OnPropertyChanged);
             copyToFolder.DataBindings.Add("Text", locations.DataSource, "CopyToFolder", true, DataSourceUpdateMode.OnPropertyChanged);
             pattern.DataBindings.Add("Text", locations.DataSource, "Pattern", true, DataSourceUpdateMode.OnPropertyChanged);
             selfGeneratedId.DataBindings.Add("Text", locations.DataSource, "Id", true, DataSourceUpdateMode.OnPropertyChanged);

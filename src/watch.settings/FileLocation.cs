@@ -12,6 +12,7 @@ namespace watch.settings
 
                 FriendlyName = friendlyName,
                 WatchFolder = "",
+                WatchSubdirectories = true,
                 CopyToFolder = "",
                 Pattern = "*"
             };
@@ -33,6 +34,7 @@ namespace watch.settings
         public Guid Id { get; set; }
         public string FriendlyName { get; set; }
         public string WatchFolder { get; set; }
+        public bool WatchSubdirectories { get; set; }
         public string CopyToFolder { get; set; }
         public string Pattern { get; set; }
     }

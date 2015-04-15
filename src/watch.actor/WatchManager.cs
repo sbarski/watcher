@@ -43,6 +43,7 @@ namespace watch.actor
             watch.Renamed += (sender, args) => TellActor(args, location.CopyToFolder);
 
             watch.EnableRaisingEvents = true;
+            watch.IncludeSubdirectories = location.WatchSubdirectories;
 
             _fileSystemWatchers.Add(location, watch);
         }

@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Config));
             this.TabControl = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
+            this.chkWatchSubdirectories = new MetroFramework.Controls.MetroCheckBox();
             this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
             this.selfGeneratedId = new MetroFramework.Controls.MetroLabel();
             this.createNewLocation = new MetroFramework.Controls.MetroButton();
@@ -71,6 +72,7 @@
             // 
             // metroTabPage1
             // 
+            this.metroTabPage1.Controls.Add(this.chkWatchSubdirectories);
             this.metroTabPage1.Controls.Add(this.metroLabel6);
             this.metroTabPage1.Controls.Add(this.selfGeneratedId);
             this.metroTabPage1.Controls.Add(this.createNewLocation);
@@ -97,10 +99,22 @@
             this.metroTabPage1.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage1.VerticalScrollbarSize = 10;
             // 
+            // chkWatchSubdirectories
+            // 
+            this.chkWatchSubdirectories.AutoSize = true;
+            this.chkWatchSubdirectories.FontSize = MetroFramework.MetroCheckBoxSize.Medium;
+            this.chkWatchSubdirectories.FontWeight = MetroFramework.MetroCheckBoxWeight.Light;
+            this.chkWatchSubdirectories.Location = new System.Drawing.Point(195, 120);
+            this.chkWatchSubdirectories.Name = "chkWatchSubdirectories";
+            this.chkWatchSubdirectories.Size = new System.Drawing.Size(148, 19);
+            this.chkWatchSubdirectories.TabIndex = 16;
+            this.chkWatchSubdirectories.Text = "Watch Subdirectories";
+            this.chkWatchSubdirectories.UseSelectable = true;
+            // 
             // metroLabel6
             // 
             this.metroLabel6.AutoSize = true;
-            this.metroLabel6.Location = new System.Drawing.Point(196, 258);
+            this.metroLabel6.Location = new System.Drawing.Point(196, 270);
             this.metroLabel6.Name = "metroLabel6";
             this.metroLabel6.Size = new System.Drawing.Size(50, 19);
             this.metroLabel6.TabIndex = 15;
@@ -109,7 +123,7 @@
             // selfGeneratedId
             // 
             this.selfGeneratedId.AutoSize = true;
-            this.selfGeneratedId.Location = new System.Drawing.Point(252, 258);
+            this.selfGeneratedId.Location = new System.Drawing.Point(252, 270);
             this.selfGeneratedId.Name = "selfGeneratedId";
             this.selfGeneratedId.Size = new System.Drawing.Size(117, 19);
             this.selfGeneratedId.TabIndex = 14;
@@ -149,7 +163,7 @@
             // 
             this.pattern.Lines = new string[] {
         "*"};
-            this.pattern.Location = new System.Drawing.Point(195, 209);
+            this.pattern.Location = new System.Drawing.Point(195, 233);
             this.pattern.MaxLength = 32767;
             this.pattern.Name = "pattern";
             this.pattern.PasswordChar = '\0';
@@ -163,7 +177,7 @@
             // metroLabel4
             // 
             this.metroLabel4.AutoSize = true;
-            this.metroLabel4.Location = new System.Drawing.Point(195, 187);
+            this.metroLabel4.Location = new System.Drawing.Point(195, 211);
             this.metroLabel4.Name = "metroLabel4";
             this.metroLabel4.Size = new System.Drawing.Size(50, 19);
             this.metroLabel4.TabIndex = 9;
@@ -172,7 +186,7 @@
             // copyToFolder
             // 
             this.copyToFolder.Lines = new string[0];
-            this.copyToFolder.Location = new System.Drawing.Point(195, 148);
+            this.copyToFolder.Location = new System.Drawing.Point(195, 176);
             this.copyToFolder.MaxLength = 32767;
             this.copyToFolder.Name = "copyToFolder";
             this.copyToFolder.PasswordChar = '\0';
@@ -185,7 +199,7 @@
             // metroLabel3
             // 
             this.metroLabel3.AutoSize = true;
-            this.metroLabel3.Location = new System.Drawing.Point(195, 126);
+            this.metroLabel3.Location = new System.Drawing.Point(195, 154);
             this.metroLabel3.Name = "metroLabel3";
             this.metroLabel3.Size = new System.Drawing.Size(99, 19);
             this.metroLabel3.TabIndex = 7;
@@ -356,6 +370,7 @@
         private MetroFramework.Controls.MetroLabel metroLabel6;
         private System.Windows.Forms.ListBox LogList;
         private MetroFramework.Controls.MetroToggle metroToggle1;
+        private MetroFramework.Controls.MetroCheckBox chkWatchSubdirectories;
 
 
 
