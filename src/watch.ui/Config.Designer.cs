@@ -32,7 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Config));
             this.TabControl = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
-            this.chkWatchSubdirectories = new MetroFramework.Controls.MetroCheckBox();
+            this.watchSubdirectories = new MetroFramework.Controls.MetroCheckBox();
             this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
             this.selfGeneratedId = new MetroFramework.Controls.MetroLabel();
             this.createNewLocation = new MetroFramework.Controls.MetroButton();
@@ -72,7 +72,7 @@
             // 
             // metroTabPage1
             // 
-            this.metroTabPage1.Controls.Add(this.chkWatchSubdirectories);
+            this.metroTabPage1.Controls.Add(this.watchSubdirectories);
             this.metroTabPage1.Controls.Add(this.metroLabel6);
             this.metroTabPage1.Controls.Add(this.selfGeneratedId);
             this.metroTabPage1.Controls.Add(this.createNewLocation);
@@ -101,15 +101,15 @@
             // 
             // chkWatchSubdirectories
             // 
-            this.chkWatchSubdirectories.AutoSize = true;
-            this.chkWatchSubdirectories.FontSize = MetroFramework.MetroCheckBoxSize.Medium;
-            this.chkWatchSubdirectories.FontWeight = MetroFramework.MetroCheckBoxWeight.Light;
-            this.chkWatchSubdirectories.Location = new System.Drawing.Point(195, 120);
-            this.chkWatchSubdirectories.Name = "chkWatchSubdirectories";
-            this.chkWatchSubdirectories.Size = new System.Drawing.Size(148, 19);
-            this.chkWatchSubdirectories.TabIndex = 16;
-            this.chkWatchSubdirectories.Text = "Watch Subdirectories";
-            this.chkWatchSubdirectories.UseSelectable = true;
+            this.watchSubdirectories.AutoSize = true;
+            this.watchSubdirectories.FontSize = MetroFramework.MetroCheckBoxSize.Medium;
+            this.watchSubdirectories.FontWeight = MetroFramework.MetroCheckBoxWeight.Light;
+            this.watchSubdirectories.Location = new System.Drawing.Point(195, 120);
+            this.watchSubdirectories.Name = "watchSubdirectories";
+            this.watchSubdirectories.Size = new System.Drawing.Size(148, 19);
+            this.watchSubdirectories.TabIndex = 16;
+            this.watchSubdirectories.Text = "Watch Subdirectories";
+            this.watchSubdirectories.UseSelectable = true;
             // 
             // metroLabel6
             // 
@@ -370,7 +370,7 @@
         private MetroFramework.Controls.MetroLabel metroLabel6;
         private System.Windows.Forms.ListBox LogList;
         private MetroFramework.Controls.MetroToggle metroToggle1;
-        private MetroFramework.Controls.MetroCheckBox chkWatchSubdirectories;
+        private MetroFramework.Controls.MetroCheckBox watchSubdirectories;
 
 
 
