@@ -65,7 +65,7 @@
             this.TabControl.Controls.Add(this.metroTabPage3);
             this.TabControl.Location = new System.Drawing.Point(24, 73);
             this.TabControl.Name = "TabControl";
-            this.TabControl.SelectedIndex = 0;
+            this.TabControl.SelectedIndex = 2;
             this.TabControl.Size = new System.Drawing.Size(819, 389);
             this.TabControl.TabIndex = 0;
             this.TabControl.UseSelectable = true;
@@ -99,7 +99,7 @@
             this.metroTabPage1.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage1.VerticalScrollbarSize = 10;
             // 
-            // chkWatchSubdirectories
+            // watchSubdirectories
             // 
             this.watchSubdirectories.AutoSize = true;
             this.watchSubdirectories.FontSize = MetroFramework.MetroCheckBoxSize.Medium;
@@ -293,6 +293,7 @@
             // LogList
             // 
             this.LogList.FormattingEnabled = true;
+            this.LogList.HorizontalScrollbar = true;
             this.LogList.Location = new System.Drawing.Point(0, 3);
             this.LogList.Name = "LogList";
             this.LogList.Size = new System.Drawing.Size(811, 342);

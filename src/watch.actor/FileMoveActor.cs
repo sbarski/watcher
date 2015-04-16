@@ -19,7 +19,7 @@ namespace watch.actor
                 {
                     File.Copy(@m.CopyFrom, @m.CopyTo, true);
 
-                    Context.ActorSelection("/user/LogActor").Tell(string.Format("Coped {0} to {1}", @m.CopyFrom, @m.CopyTo));
+                    Context.ActorSelection("/user/LogActor").Tell(string.Format("Copied {0} to {1}", @m.CopyFrom, @m.CopyTo));
                 }
                 catch (Exception e)
                 {
