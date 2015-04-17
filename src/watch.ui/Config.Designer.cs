@@ -290,6 +290,7 @@
             // LogList
             // 
             this.LogList.FormattingEnabled = true;
+            this.LogList.HorizontalScrollbar = true;
             this.LogList.Location = new System.Drawing.Point(0, 3);
             this.LogList.Name = "LogList";
             this.LogList.Size = new System.Drawing.Size(811, 342);
