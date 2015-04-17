@@ -1,14 +1,17 @@
-﻿using System.Collections.Generic;
+﻿using System.Linq;
+using Akka.Actor;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
-using Akka.Actor;
+using System.Text.RegularExpressions;
 using watch.settings;
 
 namespace watch.actor
 {
     public static class WatchManager
     {
-        private static Dictionary<FileLocation, FileSystemWatcher> _fileSystemWatchers; 
+        private static Dictionary<FileLocation, FileSystemWatcher> _fileSystemWatchers;
+        private static Dictionary<string, string> _variables;
 
         public static bool IsRunning { get; private set; }
 
@@ -16,12 +19,12 @@ namespace watch.actor
         private static IActorRef _fileMoveActor;
         private static IActorRef _logActor;
 
-        public static BindingList<string> Logs; 
+        public static BindingList<string> Logs;
 
         public static void Init()
         {
             Logs = new BindingList<string>();
-
+            
             if (_actorSystem == null)
             {
                 _actorSystem = ActorSystem.Create("FileActors");
@@ -55,12 +58,16 @@ namespace watch.actor
             _fileMoveActor.Tell(new CopyAction(args.FullPath, location));
         }
 
-        public static void Start(IList<FileLocation> locations)
+        public static void Start(IList<FileLocation> locations, IList<Variable> variables)
         {
             _fileSystemWatchers = new Dictionary<FileLocation, FileSystemWatcher>();
+            _variables = variables.ToDictionary(v => v.Name, v => v.Value);
 
             foreach (var location in locations)
             {
+                location.WatchFolder = SubstitutePathVariables(location.WatchFolder);
+                location.CopyToFolder = SubstitutePathVariables(location.CopyToFolder);
+
                 Add(location);
             }
 
@@ -82,6 +89,31 @@ namespace watch.actor
             IsRunning = false;
 
             _logActor.Tell("Actor System Stopped");
+        }
+
+        private static string SubstitutePathVariables(string path)
+        {
+            var regex = new Regex("{([^}]+)?}");
+            var match = regex.Match(path);
+
+            while (match.Success)
+            {
+                var replacement = match.Groups[0].Value;
+                var variableName = match.Groups[1].Value;
+
+                if (_variables.ContainsKey(variableName))
+                {
+                    path = path.Replace(replacement, _variables[variableName]);
+                }
+                else
+                {
+                    _logActor.Tell(string.Format("Unable to substitute a variable named {0} in path {1}", variableName, path));
+                }
+
+                match = match.NextMatch();
+            }
+
+            return path;
         }
     }
 }

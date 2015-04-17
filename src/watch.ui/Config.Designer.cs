@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Config));
             this.TabControl = new MetroFramework.Controls.MetroTabControl();
-            this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
+            this.configTabPage = new MetroFramework.Controls.MetroTabPage();
             this.watchSubdirectories = new MetroFramework.Controls.MetroCheckBox();
             this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
             this.selfGeneratedId = new MetroFramework.Controls.MetroLabel();
@@ -47,22 +47,33 @@
             this.locations = new System.Windows.Forms.ListBox();
             this.watchFolder = new MetroFramework.Controls.MetroTextBox();
             this.friendlyName = new MetroFramework.Controls.MetroTextBox();
-            this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
-            this.metroTabPage3 = new MetroFramework.Controls.MetroTabPage();
+            this.logTabPage = new MetroFramework.Controls.MetroTabPage();
             this.LogList = new System.Windows.Forms.ListBox();
+            this.variablesTabPage = new MetroFramework.Controls.MetroTabPage();
+            this.removeVariable = new MetroFramework.Controls.MetroButton();
+            this.creatNewVariable = new MetroFramework.Controls.MetroButton();
+            this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
+            this.variableValue = new MetroFramework.Controls.MetroTextBox();
+            this.variableName = new MetroFramework.Controls.MetroTextBox();
+            this.variables = new System.Windows.Forms.ListBox();
+            this.saveVariables = new MetroFramework.Controls.MetroButton();
+            this.operationTabPage = new MetroFramework.Controls.MetroTabPage();
             this.watchStatus = new MetroFramework.Controls.MetroLabel();
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.metroToggle1 = new MetroFramework.Controls.MetroToggle();
             this.TabControl.SuspendLayout();
-            this.metroTabPage1.SuspendLayout();
-            this.metroTabPage3.SuspendLayout();
+            this.configTabPage.SuspendLayout();
+            this.logTabPage.SuspendLayout();
+            this.variablesTabPage.SuspendLayout();
             this.SuspendLayout();
             // 
             // TabControl
             // 
-            this.TabControl.Controls.Add(this.metroTabPage1);
-            this.TabControl.Controls.Add(this.metroTabPage2);
-            this.TabControl.Controls.Add(this.metroTabPage3);
+            this.TabControl.Controls.Add(this.configTabPage);
+            this.TabControl.Controls.Add(this.variablesTabPage);
+            this.TabControl.Controls.Add(this.logTabPage);
+            this.TabControl.Controls.Add(this.operationTabPage);
             this.TabControl.Location = new System.Drawing.Point(24, 73);
             this.TabControl.Name = "TabControl";
             this.TabControl.SelectedIndex = 0;
@@ -70,36 +81,36 @@
             this.TabControl.TabIndex = 0;
             this.TabControl.UseSelectable = true;
             // 
-            // metroTabPage1
+            // configTabPage
             // 
-            this.metroTabPage1.Controls.Add(this.watchSubdirectories);
-            this.metroTabPage1.Controls.Add(this.metroLabel6);
-            this.metroTabPage1.Controls.Add(this.selfGeneratedId);
-            this.metroTabPage1.Controls.Add(this.createNewLocation);
-            this.metroTabPage1.Controls.Add(this.removeLocation);
-            this.metroTabPage1.Controls.Add(this.saveLocation);
-            this.metroTabPage1.Controls.Add(this.pattern);
-            this.metroTabPage1.Controls.Add(this.metroLabel4);
-            this.metroTabPage1.Controls.Add(this.copyToFolder);
-            this.metroTabPage1.Controls.Add(this.metroLabel3);
-            this.metroTabPage1.Controls.Add(this.metroLabel2);
-            this.metroTabPage1.Controls.Add(this.metroLabel1);
-            this.metroTabPage1.Controls.Add(this.locations);
-            this.metroTabPage1.Controls.Add(this.watchFolder);
-            this.metroTabPage1.Controls.Add(this.friendlyName);
-            this.metroTabPage1.HorizontalScrollbarBarColor = true;
-            this.metroTabPage1.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroTabPage1.HorizontalScrollbarSize = 10;
-            this.metroTabPage1.Location = new System.Drawing.Point(4, 38);
-            this.metroTabPage1.Name = "metroTabPage1";
-            this.metroTabPage1.Size = new System.Drawing.Size(811, 347);
-            this.metroTabPage1.TabIndex = 0;
-            this.metroTabPage1.Text = "Configuration";
-            this.metroTabPage1.VerticalScrollbarBarColor = true;
-            this.metroTabPage1.VerticalScrollbarHighlightOnWheel = false;
-            this.metroTabPage1.VerticalScrollbarSize = 10;
+            this.configTabPage.Controls.Add(this.watchSubdirectories);
+            this.configTabPage.Controls.Add(this.metroLabel6);
+            this.configTabPage.Controls.Add(this.selfGeneratedId);
+            this.configTabPage.Controls.Add(this.createNewLocation);
+            this.configTabPage.Controls.Add(this.removeLocation);
+            this.configTabPage.Controls.Add(this.saveLocation);
+            this.configTabPage.Controls.Add(this.pattern);
+            this.configTabPage.Controls.Add(this.metroLabel4);
+            this.configTabPage.Controls.Add(this.copyToFolder);
+            this.configTabPage.Controls.Add(this.metroLabel3);
+            this.configTabPage.Controls.Add(this.metroLabel2);
+            this.configTabPage.Controls.Add(this.metroLabel1);
+            this.configTabPage.Controls.Add(this.locations);
+            this.configTabPage.Controls.Add(this.watchFolder);
+            this.configTabPage.Controls.Add(this.friendlyName);
+            this.configTabPage.HorizontalScrollbarBarColor = true;
+            this.configTabPage.HorizontalScrollbarHighlightOnWheel = false;
+            this.configTabPage.HorizontalScrollbarSize = 10;
+            this.configTabPage.Location = new System.Drawing.Point(4, 38);
+            this.configTabPage.Name = "configTabPage";
+            this.configTabPage.Size = new System.Drawing.Size(811, 347);
+            this.configTabPage.TabIndex = 0;
+            this.configTabPage.Text = "Configuration";
+            this.configTabPage.VerticalScrollbarBarColor = true;
+            this.configTabPage.VerticalScrollbarHighlightOnWheel = false;
+            this.configTabPage.VerticalScrollbarSize = 10;
             // 
-            // chkWatchSubdirectories
+            // watchSubdirectories
             // 
             this.watchSubdirectories.AutoSize = true;
             this.watchSubdirectories.FontSize = MetroFramework.MetroCheckBoxSize.Medium;
@@ -261,34 +272,20 @@
             this.friendlyName.Text = "My File Watcher";
             this.friendlyName.UseSelectable = true;
             // 
-            // metroTabPage2
+            // logTabPage
             // 
-            this.metroTabPage2.HorizontalScrollbarBarColor = true;
-            this.metroTabPage2.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroTabPage2.HorizontalScrollbarSize = 10;
-            this.metroTabPage2.Location = new System.Drawing.Point(4, 38);
-            this.metroTabPage2.Name = "metroTabPage2";
-            this.metroTabPage2.Size = new System.Drawing.Size(811, 347);
-            this.metroTabPage2.TabIndex = 1;
-            this.metroTabPage2.Text = "Operation";
-            this.metroTabPage2.VerticalScrollbarBarColor = true;
-            this.metroTabPage2.VerticalScrollbarHighlightOnWheel = false;
-            this.metroTabPage2.VerticalScrollbarSize = 10;
-            // 
-            // metroTabPage3
-            // 
-            this.metroTabPage3.Controls.Add(this.LogList);
-            this.metroTabPage3.HorizontalScrollbarBarColor = true;
-            this.metroTabPage3.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroTabPage3.HorizontalScrollbarSize = 10;
-            this.metroTabPage3.Location = new System.Drawing.Point(4, 38);
-            this.metroTabPage3.Name = "metroTabPage3";
-            this.metroTabPage3.Size = new System.Drawing.Size(811, 347);
-            this.metroTabPage3.TabIndex = 2;
-            this.metroTabPage3.Text = "Log";
-            this.metroTabPage3.VerticalScrollbarBarColor = true;
-            this.metroTabPage3.VerticalScrollbarHighlightOnWheel = false;
-            this.metroTabPage3.VerticalScrollbarSize = 10;
+            this.logTabPage.Controls.Add(this.LogList);
+            this.logTabPage.HorizontalScrollbarBarColor = true;
+            this.logTabPage.HorizontalScrollbarHighlightOnWheel = false;
+            this.logTabPage.HorizontalScrollbarSize = 10;
+            this.logTabPage.Location = new System.Drawing.Point(4, 38);
+            this.logTabPage.Name = "logTabPage";
+            this.logTabPage.Size = new System.Drawing.Size(811, 347);
+            this.logTabPage.TabIndex = 2;
+            this.logTabPage.Text = "Log";
+            this.logTabPage.VerticalScrollbarBarColor = true;
+            this.logTabPage.VerticalScrollbarHighlightOnWheel = false;
+            this.logTabPage.VerticalScrollbarSize = 10;
             // 
             // LogList
             // 
@@ -297,6 +294,126 @@
             this.LogList.Name = "LogList";
             this.LogList.Size = new System.Drawing.Size(811, 342);
             this.LogList.TabIndex = 2;
+            // 
+            // variablesTabPage
+            // 
+            this.variablesTabPage.Controls.Add(this.removeVariable);
+            this.variablesTabPage.Controls.Add(this.creatNewVariable);
+            this.variablesTabPage.Controls.Add(this.metroLabel5);
+            this.variablesTabPage.Controls.Add(this.metroLabel7);
+            this.variablesTabPage.Controls.Add(this.variableValue);
+            this.variablesTabPage.Controls.Add(this.variableName);
+            this.variablesTabPage.Controls.Add(this.variables);
+            this.variablesTabPage.Controls.Add(this.saveVariables);
+            this.variablesTabPage.HorizontalScrollbarBarColor = true;
+            this.variablesTabPage.HorizontalScrollbarHighlightOnWheel = false;
+            this.variablesTabPage.HorizontalScrollbarSize = 10;
+            this.variablesTabPage.Location = new System.Drawing.Point(4, 38);
+            this.variablesTabPage.Name = "variablesTabPage";
+            this.variablesTabPage.Size = new System.Drawing.Size(811, 347);
+            this.variablesTabPage.TabIndex = 3;
+            this.variablesTabPage.Text = "Variables";
+            this.variablesTabPage.VerticalScrollbarBarColor = true;
+            this.variablesTabPage.VerticalScrollbarHighlightOnWheel = false;
+            this.variablesTabPage.VerticalScrollbarSize = 10;
+            // 
+            // removeVariable
+            // 
+            this.removeVariable.Location = new System.Drawing.Point(195, 303);
+            this.removeVariable.Name = "removeVariable";
+            this.removeVariable.Size = new System.Drawing.Size(114, 36);
+            this.removeVariable.TabIndex = 19;
+            this.removeVariable.Text = "Remove";
+            this.removeVariable.UseSelectable = true;
+            this.removeVariable.Click += new System.EventHandler(this.removeVariable_Click);
+            // 
+            // creatNewVariable
+            // 
+            this.creatNewVariable.Location = new System.Drawing.Point(746, 34);
+            this.creatNewVariable.Name = "creatNewVariable";
+            this.creatNewVariable.Size = new System.Drawing.Size(53, 23);
+            this.creatNewVariable.TabIndex = 18;
+            this.creatNewVariable.Text = "+ new";
+            this.creatNewVariable.UseSelectable = true;
+            this.creatNewVariable.Click += new System.EventHandler(this.creatNewVariable_Click);
+            // 
+            // metroLabel5
+            // 
+            this.metroLabel5.AutoSize = true;
+            this.metroLabel5.Location = new System.Drawing.Point(195, 69);
+            this.metroLabel5.Name = "metroLabel5";
+            this.metroLabel5.Size = new System.Drawing.Size(89, 19);
+            this.metroLabel5.TabIndex = 17;
+            this.metroLabel5.Text = "Variable Value";
+            // 
+            // metroLabel7
+            // 
+            this.metroLabel7.AutoSize = true;
+            this.metroLabel7.Location = new System.Drawing.Point(195, 12);
+            this.metroLabel7.Name = "metroLabel7";
+            this.metroLabel7.Size = new System.Drawing.Size(95, 19);
+            this.metroLabel7.TabIndex = 16;
+            this.metroLabel7.Text = "Variable Name";
+            // 
+            // variableValue
+            // 
+            this.variableValue.Lines = new string[0];
+            this.variableValue.Location = new System.Drawing.Point(195, 91);
+            this.variableValue.MaxLength = 32767;
+            this.variableValue.Name = "variableValue";
+            this.variableValue.PasswordChar = '\0';
+            this.variableValue.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.variableValue.SelectedText = "";
+            this.variableValue.Size = new System.Drawing.Size(604, 23);
+            this.variableValue.TabIndex = 15;
+            this.variableValue.UseSelectable = true;
+            // 
+            // variableName
+            // 
+            this.variableName.Lines = new string[0];
+            this.variableName.Location = new System.Drawing.Point(195, 34);
+            this.variableName.MaxLength = 32767;
+            this.variableName.Name = "variableName";
+            this.variableName.PasswordChar = '\0';
+            this.variableName.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.variableName.SelectedText = "";
+            this.variableName.Size = new System.Drawing.Size(545, 23);
+            this.variableName.TabIndex = 14;
+            this.variableName.UseSelectable = true;
+            // 
+            // variables
+            // 
+            this.variables.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.variables.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.variables.FormattingEnabled = true;
+            this.variables.Location = new System.Drawing.Point(0, 12);
+            this.variables.Name = "variables";
+            this.variables.Size = new System.Drawing.Size(189, 327);
+            this.variables.TabIndex = 13;
+            // 
+            // saveVariables
+            // 
+            this.saveVariables.Location = new System.Drawing.Point(699, 303);
+            this.saveVariables.Name = "saveVariables";
+            this.saveVariables.Size = new System.Drawing.Size(100, 36);
+            this.saveVariables.TabIndex = 12;
+            this.saveVariables.Text = "Save";
+            this.saveVariables.UseSelectable = true;
+            this.saveVariables.Click += new System.EventHandler(this.saveVariables_Click);
+            // 
+            // operationTabPage
+            // 
+            this.operationTabPage.HorizontalScrollbarBarColor = true;
+            this.operationTabPage.HorizontalScrollbarHighlightOnWheel = false;
+            this.operationTabPage.HorizontalScrollbarSize = 10;
+            this.operationTabPage.Location = new System.Drawing.Point(4, 38);
+            this.operationTabPage.Name = "operationTabPage";
+            this.operationTabPage.Size = new System.Drawing.Size(811, 347);
+            this.operationTabPage.TabIndex = 1;
+            this.operationTabPage.Text = "Operation";
+            this.operationTabPage.VerticalScrollbarBarColor = true;
+            this.operationTabPage.VerticalScrollbarHighlightOnWheel = false;
+            this.operationTabPage.VerticalScrollbarSize = 10;
             // 
             // watchStatus
             // 
@@ -338,9 +455,11 @@
             this.Text = "Watcher";
             this.Load += new System.EventHandler(this.Config_Load);
             this.TabControl.ResumeLayout(false);
-            this.metroTabPage1.ResumeLayout(false);
-            this.metroTabPage1.PerformLayout();
-            this.metroTabPage3.ResumeLayout(false);
+            this.configTabPage.ResumeLayout(false);
+            this.configTabPage.PerformLayout();
+            this.logTabPage.ResumeLayout(false);
+            this.variablesTabPage.ResumeLayout(false);
+            this.variablesTabPage.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -349,8 +468,8 @@
         #endregion
 
         private MetroFramework.Controls.MetroTabControl TabControl;
-        private MetroFramework.Controls.MetroTabPage metroTabPage1;
-        private MetroFramework.Controls.MetroTabPage metroTabPage2;
+        private MetroFramework.Controls.MetroTabPage configTabPage;
+        private MetroFramework.Controls.MetroTabPage operationTabPage;
         private MetroFramework.Controls.MetroTextBox friendlyName;
         private MetroFramework.Controls.MetroTextBox watchFolder;
         private MetroFramework.Controls.MetroLabel metroLabel1;
@@ -363,7 +482,7 @@
         private MetroFramework.Controls.MetroButton saveLocation;
         private MetroFramework.Controls.MetroButton removeLocation;
         private MetroFramework.Controls.MetroButton createNewLocation;
-        private MetroFramework.Controls.MetroTabPage metroTabPage3;
+        private MetroFramework.Controls.MetroTabPage logTabPage;
         private MetroFramework.Controls.MetroLabel watchStatus;
         private System.Windows.Forms.NotifyIcon notifyIcon;
         private MetroFramework.Controls.MetroLabel selfGeneratedId;
@@ -371,6 +490,15 @@
         private System.Windows.Forms.ListBox LogList;
         private MetroFramework.Controls.MetroToggle metroToggle1;
         private MetroFramework.Controls.MetroCheckBox watchSubdirectories;
+        private MetroFramework.Controls.MetroTabPage variablesTabPage;
+        private MetroFramework.Controls.MetroButton saveVariables;
+        private MetroFramework.Controls.MetroButton removeVariable;
+        private MetroFramework.Controls.MetroButton creatNewVariable;
+        private MetroFramework.Controls.MetroLabel metroLabel5;
+        private MetroFramework.Controls.MetroLabel metroLabel7;
+        private MetroFramework.Controls.MetroTextBox variableValue;
+        private MetroFramework.Controls.MetroTextBox variableName;
+        private System.Windows.Forms.ListBox variables;
 
 
 

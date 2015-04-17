@@ -27,6 +27,9 @@ namespace watch.ui
 
             LogList.DataSource = WatchManager.Logs;
 
+            variables.DataSource = Settings.Variables;
+            variables.DisplayMember = "Name";
+
             friendlyName.DataBindings.Add("Text", locations.DataSource, "FriendlyName", true, DataSourceUpdateMode.OnPropertyChanged);
             watchFolder.DataBindings.Add("Text", locations.DataSource, "WatchFolder", true, DataSourceUpdateMode.OnPropertyChanged);
             watchSubdirectories.DataBindings.Add("Checked", locations.DataSource, "WatchSubdirectories", true, DataSourceUpdateMode.OnPropertyChanged);
@@ -34,6 +37,9 @@ namespace watch.ui
             pattern.DataBindings.Add("Text", locations.DataSource, "Pattern", true, DataSourceUpdateMode.OnPropertyChanged);
             selfGeneratedId.DataBindings.Add("Text", locations.DataSource, "Id", true, DataSourceUpdateMode.OnPropertyChanged);
 
+            variableName.DataBindings.Add("Text", variables.DataSource, "Name", true, DataSourceUpdateMode.OnPropertyChanged);
+            variableValue.DataBindings.Add("Text", variables.DataSource, "Value", true, DataSourceUpdateMode.OnPropertyChanged);
+            
             Resize += Config_Resize;
             notifyIcon.MouseClick += notifyIcon_MouseClick;
         }
@@ -57,14 +63,7 @@ namespace watch.ui
                 Settings.Locations.Add(location);
             }
 
-            if (Settings.Locations.Any(m => string.IsNullOrEmpty(m.CopyToFolder) || string.IsNullOrEmpty(m.FriendlyName) || string.IsNullOrEmpty(m.WatchFolder)))
-            {
-                MetroFramework.MetroMessageBox.Show(this, "Please fill out all fields", "Save", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            Settings.Locations.ResetBindings();
-
-            AppSettings.Save(Settings, _saveFile);
+            SaveSettings();
         }
 
         private void removeLocation_Click(object sender, System.EventArgs e)
@@ -108,13 +107,73 @@ namespace watch.ui
             if (checkedState == CheckState.Checked)
             {
                 watchStatus.Text = "(Running)";
-                WatchManager.Start(Settings.Locations);
+                WatchManager.Start(Settings.Locations, Settings.Variables);
             }
             else
             {
                 watchStatus.Text = "(Not Running)";
                 WatchManager.Stop();
             }
+        }
+
+        private void saveVariables_Click(object sender, System.EventArgs e)
+        {
+            if (variables.Items.Count == 0)
+            {
+                var variable = Variable.Create();
+
+                Settings.Variables.Add(variable);
+            }
+
+            SaveSettings();
+        }
+
+        private void SaveSettings()
+        {
+            Settings.Locations.ResetBindings();
+            Settings.Variables.ResetBindings();
+
+            if (Settings.Locations.Any(m => string.IsNullOrEmpty(m.CopyToFolder) || string.IsNullOrEmpty(m.FriendlyName) || string.IsNullOrEmpty(m.WatchFolder)))
+            {
+                MetroFramework.MetroMessageBox.Show(this, "Please fill out all fields", "Save", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                TabControl.SelectedTab = configTabPage;
+                return;
+            }
+
+            if (Settings.Variables.Any(v => string.IsNullOrEmpty(v.Name) || string.IsNullOrEmpty(v.Value)))
+            {
+                MetroFramework.MetroMessageBox.Show(this, "Please fill out all fields", "Save", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                TabControl.SelectedTab = variablesTabPage;
+                return;
+            }
+
+            if (Settings.Variables.Count(v => v.Name == variableName.Text) > 1)
+            {
+                MetroFramework.MetroMessageBox.Show(this, "Oops, the variable name already exists. Variable names must be unique.", "Save", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                TabControl.SelectedTab = variablesTabPage;
+                return;
+            }
+
+            AppSettings.Save(Settings, _saveFile);
+        }
+
+        private void creatNewVariable_Click(object sender, System.EventArgs e)
+        {
+            Settings.Variables.Add(Variable.Create("New Variable " + variables.Items.Count));
+
+            variables.SelectedIndex = variables.Items.Count - 1;
+        }
+
+        private void removeVariable_Click(object sender, System.EventArgs e)
+        {
+            if (variables.SelectedIndex < 0)
+            {
+                return;
+            }
+
+            Settings.Variables.RemoveAt(variables.SelectedIndex);
+
+            AppSettings.Save(Settings, _saveFile);
         }
     }
 }

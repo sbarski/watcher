@@ -1,5 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 
 namespace watch.settings
 {
@@ -8,8 +7,10 @@ namespace watch.settings
         public Settings()
         {
             Locations = new BindingList<FileLocation>();
+            Variables = new BindingList<Variable>();
         }
 
         public BindingList<FileLocation> Locations { get; set; }
+        public BindingList<Variable> Variables { get; set; } 
     }
 }
