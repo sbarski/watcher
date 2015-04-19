@@ -47,8 +47,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActorExtensions.cs" />
     <Compile Include="CopyAction.cs" />
     <Compile Include="LogActor.cs" />
+    <Compile Include="SubstituteAction.cs" />
+    <Compile Include="SubtituteActor.cs" />
     <Compile Include="WatchManager.cs" />
     <Compile Include="FileMoveActor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

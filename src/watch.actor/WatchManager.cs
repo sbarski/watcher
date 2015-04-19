@@ -1,9 +1,9 @@
-﻿using System.Linq;
-using Akka.Actor;
+﻿using Akka.Actor;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
-using System.Text.RegularExpressions;
+using System.Linq;
+using System.Threading.Tasks;
 using watch.settings;
 
 namespace watch.actor
@@ -18,6 +18,7 @@ namespace watch.actor
         private static ActorSystem _actorSystem;
         private static IActorRef _fileMoveActor;
         private static IActorRef _logActor;
+        private static IActorRef _subtituteActor;
 
         public static BindingList<string> Logs;
 
@@ -29,6 +30,7 @@ namespace watch.actor
             {
                 _actorSystem = ActorSystem.Create("FileActors");
                 _logActor = _actorSystem.ActorOf(Props.Create<LogActor>(Logs), "LogActor");
+                _subtituteActor = _actorSystem.ActorOf(Props.Create<SubtituteActor>(_logActor), "SubtitutionActor");
                 _fileMoveActor = _actorSystem.ActorOf(Props.Create<FileMoveActor>(), "FileMoveActor");
             }
 
@@ -65,8 +67,8 @@ namespace watch.actor
 
             foreach (var location in locations)
             {
-                location.WatchFolder = SubstitutePathVariables(location.WatchFolder);
-                location.CopyToFolder = SubstitutePathVariables(location.CopyToFolder);
+                location.WatchFolder = _subtituteActor.AskAndWait<string>(new SubstituteAction(location.WatchFolder, _variables));
+                location.CopyToFolder = _subtituteActor.AskAndWait<string>(new SubstituteAction(location.CopyToFolder, _variables));
 
                 Add(location);
             }
@@ -89,31 +91,6 @@ namespace watch.actor
             IsRunning = false;
 
             _logActor.Tell("Actor System Stopped");
-        }
-
-        private static string SubstitutePathVariables(string path)
-        {
-            var regex = new Regex("{([^}]+)?}");
-            var match = regex.Match(path);
-
-            while (match.Success)
-            {
-                var replacement = match.Groups[0].Value;
-                var variableName = match.Groups[1].Value;
-
-                if (_variables.ContainsKey(variableName))
-                {
-                    path = path.Replace(replacement, _variables[variableName]);
-                }
-                else
-                {
-                    _logActor.Tell(string.Format("Unable to substitute a variable named {0} in path {1}", variableName, path));
-                }
-
-                match = match.NextMatch();
-            }
-
-            return path;
         }
     }
 }
