@@ -41,11 +41,14 @@ namespace watch.actor
 
         public static void Add(FileLocation location)
         {
-            var watch = new FileSystemWatcher(location.WatchFolder, location.Pattern);
-                
-            watch.Changed += (sender, args) => TellActor(args, location.CopyToFolder);
-            watch.Created += (sender, args) => TellActor(args, location.CopyToFolder);
-            watch.Renamed += (sender, args) => TellActor(args, location.CopyToFolder);
+            var watchFolder = _subtituteActor.AskAndWait<string>(new SubstituteAction(location.WatchFolder, _variables));
+            var copyToFolder = _subtituteActor.AskAndWait<string>(new SubstituteAction(location.CopyToFolder, _variables));
+
+            var watch = new FileSystemWatcher(watchFolder, location.Pattern);
+
+            watch.Changed += (sender, args) => TellActor(args, copyToFolder);
+            watch.Created += (sender, args) => TellActor(args, copyToFolder);
+            watch.Renamed += (sender, args) => TellActor(args, copyToFolder);
 
             watch.EnableRaisingEvents = true;
             watch.IncludeSubdirectories = location.WatchSubdirectories;
@@ -67,9 +70,6 @@ namespace watch.actor
 
             foreach (var location in locations)
             {
-                location.WatchFolder = _subtituteActor.AskAndWait<string>(new SubstituteAction(location.WatchFolder, _variables));
-                location.CopyToFolder = _subtituteActor.AskAndWait<string>(new SubstituteAction(location.CopyToFolder, _variables));
-
                 Add(location);
             }
 
